@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "sourceMap": true,
+        "lib": ["DOM", "ES2017"],
+        "target": "ES6",
+        "esModuleInterop": true,
+        // "module": "ES6",
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "Recommended"
+}
