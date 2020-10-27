@@ -1,4 +1,6 @@
 
+import Foo from "./foo";
+
 
 class C {
     #boxy: HTMLElement;
@@ -11,9 +13,12 @@ class C {
 
     Foo = async () => {
         this.Put ('abcd');
+        let foo  = await Foo ();
+        foo._initialize();
         for (let i = 0; i < 10; ++i) {
             await C.sleep (50);
-            this.Put (document.createElement('br'), 'hijk');
+            let n = foo._foo ();
+            this.Put (document.createElement('br'), 'hijk ' + n);
         }
     }
 

@@ -6,6 +6,7 @@
         "target": "ES6",
         "esModuleInterop": true,
         // "module": "ES6",
+        "moduleResolution": "node",
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true
     },
