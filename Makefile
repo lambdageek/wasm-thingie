@@ -14,6 +14,8 @@ PARCELED_SOURCES= \
 
 C_SOURCES= \
 	c/foo.c \
+	c/bar.h \
+	c/bar.cxx \
 	c/Makefile \
 	Makefile
 

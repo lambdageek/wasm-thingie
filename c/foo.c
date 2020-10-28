@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <emscripten.h>
+#include "bar.h"
+
 int *g;
 
 EMSCRIPTEN_KEEPALIVE
@@ -15,6 +17,6 @@ EMSCRIPTEN_KEEPALIVE
 int
 foo (void)
 {
-    *g += 1;
+    *g += get_bar ();
     return *g;
 }
