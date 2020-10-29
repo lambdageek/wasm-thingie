@@ -6,10 +6,16 @@ declare function Module<Inp extends Module.InputModule>(inputModule?: Inp): Prom
 declare namespace Module {
 
     /// Properties that can be set to affect the emscripten wasm module
-    export interface InputModule {
+    export interface ModuleMemory {
         INITIAL_MEMORY?: number;
         wasmMemory?: WebAssembly.Memory;
     }
+
+    export interface ModulePrint {
+        print: (...data: any[]) => void;
+    }
+
+    export type InputModule = Partial<ModuleMemory> & Partial<ModulePrint>;
 
     export interface Module {
         HEAP8: Int8Array;

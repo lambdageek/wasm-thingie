@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <memory.h>
+#include <stdio.h>
 #include <emscripten.h>
 #include "bar.h"
 
@@ -9,8 +10,12 @@ EMSCRIPTEN_KEEPALIVE
 void
 initialize (void)
 {
-    g = malloc (sizeof (int));
-    memset (g, 0, sizeof(*g));
+    if (g)
+        printf ("g already set\n");
+    else {
+        g = malloc (sizeof (int));
+        memset (g, 0, sizeof(*g));
+    }
 }
 
 EMSCRIPTEN_KEEPALIVE

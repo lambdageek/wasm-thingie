@@ -1,5 +1,35 @@
+#embody {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: grid;
+    margin: 50px;
+    padding: 4ex;
+    grid-template-areas:
+        'buttons boxy';
+    grid-template-columns: min-content 1fr;
+    column-gap: 10px;
+}
+
 #boxy {
     border: red 2px solid;
     margin: 2ex;
     padding: 4ex;
+    grid-area: boxy;
+    overflow-y: scroll;
+}
+
+
+#buttons {
+    padding: 0ex;
+    margin: 2ex;
+    grid-area: buttons;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex: 100px;
 }
