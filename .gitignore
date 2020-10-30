@@ -4,3 +4,5 @@
 /node_modules/
 foo.js
 foo.wasm
+!/docs/
+!/docs/*.wasm
