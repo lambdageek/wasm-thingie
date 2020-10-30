@@ -44,6 +44,8 @@ clean:
 distclean: clean
 	-rm -rf node_modules
 
-publish:
+publish: docs/index.html
+
+docs/index.html: $(PARCELED_SOURCES) $(GENERATED)
 	parcel build -d docs --public-url /wasm-thingie/ $(ROOTS)
 
