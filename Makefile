@@ -45,4 +45,5 @@ distclean: clean
 	-rm -rf node_modules
 
 publish:
-	parcel build -d docs $(ROOTS) 
+	parcel build -d docs --public-url /wasm-thingie/ $(ROOTS)
+
