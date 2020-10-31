@@ -12,3 +12,6 @@ Using [parcel](https://parceljs.org) v1.
 $ make
 ```
 
+## Live demo
+
+[lambdageek.dev/wasm-thingie](https://lambdageek.dev/wasm-thingie/index.html)
