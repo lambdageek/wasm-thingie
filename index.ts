@@ -41,10 +41,7 @@ class C {
 
     MakeModuleIn = <T extends Foo.InputModule>(t: T): T&Foo.ModulePrint => {
         const print = (...data: any[]) => {
-            this.Put (C.StdoutBanner());
-            data.forEach((v) => {
-                this.Put (v);
-            });
+            this.Put (C.StdoutBanner(), ...data, '\n');
         };
         
         const u = {...t, print: print};
@@ -59,10 +56,9 @@ class C {
             for (let i = 0; i < 50; ++i) {
                 await C.sleep (50);
                 const n = foo._foo ();
-                this.Put (document.createElement('br'), `iter i = ${i} n = ${n}`);
+                this.Put (`iter i = ${i} n = ${n}\n`);
             }
-            this.Put (document.createElement("br"));
-            this.Put (`memory has ${this.state.mem!.buffer.byteLength} bytes`);
+            this.Put (`\n\nmemory has ${this.state.mem!.buffer.byteLength} bytes\n`);
         }); 
     }
 
@@ -103,15 +99,19 @@ class C {
         const newMem = new WebAssembly.Memory(memoryDescriptor);
         const moduleIn = this.MakeModuleIn ({"wasmMemory": newMem, "INITIAL_MEMORY": initialMemory});
         this.state.mem = newMem;
+        this.Put ("instantiating wasm module ...\n");
         const foo = await Foo (moduleIn);
-        if (oldBuffer !== undefined)
+        this.Put ("wasm module instantiation finished\n");
+        if (oldBuffer !== undefined) {
             C.CopyBuffer({from: oldBuffer, to: newMem.buffer});
+            this.Put ("snapshot copied to instance memory\n");
+        }
         oldBuffer = undefined;
         return foo;
     }
 
     FirstRun = async () => {
-        this.Put ('First run');
+        this.Put ('First run\n');
         const foo = await this.Reinit();
         await this.Compute(foo, Checkpoint.Save);
     }
@@ -119,7 +119,7 @@ class C {
     Refresh = async () => {
         if (this.state.computing)
             return;
-        this.#boxy.innerHTML = "Restarted<br>";
+        this.#boxy.innerHTML = "Restarted\n";
         const foo = await this.Reinit (this.state.checkpoint!);
         await this.Compute (foo, Checkpoint.No);
     }
