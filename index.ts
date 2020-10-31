@@ -37,9 +37,11 @@ class C {
         return [{initial: initialMem, maximum: maximumMem},  initialMem * WASM_PAGE_SIZE];
     }
 
+    
+
     MakeModuleIn = <T extends Foo.InputModule>(t: T): T&Foo.ModulePrint => {
         const print = (...data: any[]) => {
-            this.Put (document.createElement('br'), 'stdout> ');
+            this.Put (C.StdoutBanner());
             data.forEach((v) => {
                 this.Put (v);
             });
@@ -124,6 +126,13 @@ class C {
 
     Put = (...content: (string | Node)[]) => {
         this.#boxy.append(...content);
+    }
+
+    static StdoutBanner = (): HTMLElement => {
+        const e = document.createElement("span");
+        e.classList.add("stdoutBanner");
+        e.append("stdout⋙ ");
+        return e;
     }
 
     _dumpObject = (foo: object, name?: string) => {
