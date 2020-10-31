@@ -13,6 +13,7 @@ initialize (void)
     if (g)
         printf ("g already set\n");
     else {
+        printf ("allocated g\n");
         g = malloc (sizeof (int));
         memset (g, 0, sizeof(*g));
     }
